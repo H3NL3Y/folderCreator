@@ -23,6 +23,8 @@ The folders should then appear in the same place as the .py.
 - Able to upload CSV with student details.
 - Reads CSV and creates folders based on the class name.
 - Creates a sub-folder with the following format:
+- Asks the user if they want to add a file - This will be added to all folders created
+
 >[Exam Number]-[First Name]_[Surname]
 
 
