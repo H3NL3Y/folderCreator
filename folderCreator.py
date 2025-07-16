@@ -1,9 +1,24 @@
 import os
+import csv
+
+#TODO: Allow different class names as a sub group. This may be another column in the CSV.
 
 
-def create_folder():
-    fName = input("Enter folder name: ")
-    location = input("Enter path, leave blank for current locations: ")
+
+def student():
+    with open('student_details.csv', mode='r', newline='') as file:
+        reader = csv.reader(file)
+        for row in reader:
+            folderName = row[2] +"-"+ row[1] +"_"+ row[0] #Concantenates the required details in the correct order.
+            create_folder(folderName)
+
+
+
+def create_folder(name):
+    # TODO: Improve this to function without global variable.
+    global location
+    fName = name
+
 
     if not location:
         location = os.getcwd() #This returns the current location of the file.
@@ -20,5 +35,8 @@ def create_folder():
         print(f"Error creating folder: {e}")
 
 if __name__ == "__main__":
-    create_folder()
+
+    location = input("Enter path, leave blank for current locations: ")
+    student()
+
 
