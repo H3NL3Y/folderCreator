@@ -40,18 +40,23 @@ def create_folder(name,className):
         addnewfile(full_path)
 
 def addnewfile(folder_path):
-    source_file = "URS.docx"
+
     destination = os.path.join(folder_path, source_file)
 
     # Copy the file
-    shutil.copy(source_file, destination)
+    if os.path.exists(destination):
+        print(f"⚠️ File already exists at: {destination}")
+    else:
+        shutil.copy(source_file, destination)
+        print(f"✅ File copied to: {destination}")
 
-    print(f"File copied to: {destination}")
 
 
 
 if __name__ == "__main__":
     addFile = input("When the folders have successfully been created, do you want to add a file/s to each of them? [Y/N]: ")
+    if addFile == 'Y':
+        source_file = input("What is the name of the file you want to add to the folders? (This should be in the same folder as the folderCreator.py): ")
     student()
 
 
