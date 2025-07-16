@@ -9,15 +9,17 @@ def student():
     with open('student_details.csv', mode='r', newline='') as file:
         reader = csv.reader(file)
         for row in reader:
-            folderName = row[2] +"-"+ row[1] +"_"+ row[0] #Concantenates the required details in the correct order.
-            create_folder(folderName)
+            folderName = row[2] +"-"+ row[1] +"_"+ row[0]#Concantenates the required details in the correct order.
+            className = row[3]
+            create_folder(folderName,className)
 
 
 
-def create_folder(name):
+def create_folder(name,className):
     # TODO: Improve this to function without global variable.
-    global location
+
     fName = name
+    location = className
 
 
     if not location:
@@ -35,8 +37,6 @@ def create_folder(name):
         print(f"Error creating folder: {e}")
 
 if __name__ == "__main__":
-
-    location = input("Enter path, leave blank for current locations: ")
     student()
 
 
